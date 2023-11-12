@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-
+import './Cart.css';
 
 const Cart = ({cart, handleRemoveFromCart}) => {
     let message;
@@ -14,7 +14,9 @@ const Cart = ({cart, handleRemoveFromCart}) => {
     }
     return (
         <div>
-            <h1>Order Summery: {cart.length}</h1>
+            <h1 className={cart.length === 1 ? 'blue' : 'red'}>Order Summery: {cart.length}</h1>
+            <p className={`bold bordered ${cart.length === 3 ? 'yellow' : 'purple'}`}>Something</p>
+            {cart.length > 2 ? <span className='purple'>Aro kino</span> : <span>Fokira</span>}
             {message}
             {
                 cart.map(tshirt => <p 
@@ -23,6 +25,12 @@ const Cart = ({cart, handleRemoveFromCart}) => {
                     <button 
                     onClick={() => handleRemoveFromCart(tshirt._id)}
                     >X</button></p>)
+            }
+            {
+                cart.length === 2 && <p>Double Bonanza</p>
+            }
+            {
+                cart.length === 3 || <p>Tinta tow hoilo na</p>
             }
         </div>
     );
