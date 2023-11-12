@@ -2,9 +2,20 @@
 
 
 const Cart = ({cart, handleRemoveFromCart}) => {
+    let message;
+    if(cart.length === 0){
+        message = <p>Please add some products..</p>
+    }
+    else {
+        message = <div>
+            <h3>Boroloxxx</h3>
+            <p><small>Thanks for giving you money</small></p>
+        </div>
+    }
     return (
         <div>
             <h1>Order Summery: {cart.length}</h1>
+            {message}
             {
                 cart.map(tshirt => <p 
                     key={tshirt._id}
